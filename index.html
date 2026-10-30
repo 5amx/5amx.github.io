@@ -85,11 +85,7 @@
     .project { border: 1px solid var(--line); background: linear-gradient(145deg, rgba(19,24,33,.94), rgba(13,16,23,.95)); border-radius: 13px; padding: 25px; display: flex; flex-direction: column; min-height: 250px; transition: border-color .2s, transform .2s; }
     .project:hover { border-color: #526477; transform: translateY(-3px); }
     .project.featured { grid-column: span 2; display: grid; grid-template-columns: minmax(0,1.2fr) minmax(220px,.8fr); gap: 30px; min-height: 320px; }
-    .project-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; width: 100%; margin-bottom: 8px; }
-    /* The showcase copy uses align-items:flex-start, so explicitly stretch this row.
-       Auto margin keeps the type tag at the right even if it wraps to a new line. */
-    .showcase-copy .project-top { align-self: stretch; }
-    #project-type { margin-left: auto; margin-right: 0; }
+    .project-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
     .project-index { color: var(--accent); font: .72rem "DM Mono", monospace; }
     .tag { display: inline-flex; border: 1px solid #354151; border-radius: 5px; padding: 5px 8px; color: #b8c4d3; font-size: .64rem; margin: 4px 4px 0 0; }
     .project p { color: var(--muted); font-size: .94rem; }
@@ -371,7 +367,8 @@
             <p class="lead" style="margin:18px 0 0">Contact me, it will be a pleasure to make your idea alive!</p>
           </div>
           <div class="actions" style="margin-top:0">
-            <a class="btn btn-primary" href="https://github.com/5amx" target="_blank" rel="noreferrer">GitHub profile ↗</a>
+            <a class="btn btn-primary" href="mailto:martinezasamuel@gmail.com">martinezasamuel@gmail.com</a>
+            <a class="btn btn-quiet" href="https://github.com/5amx" target="_blank" rel="noreferrer">GitHub profile ↗</a>
             <a class="btn btn-quiet" href="https://www.linkedin.com/in/samuel-martinez-acuna/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
           </div>
         </div>
@@ -412,4 +409,3 @@
   </script>
 </body>
 </html>
-
