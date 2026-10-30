@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b10">
+  <meta name="description" content="Portfolio of an Audio Software Engineer specializing in C++, JUCE, audio plugins, DSP, custom graphics, and interactive audio.">
+  <title>5AMX — Audio Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090b10;
+      --panel: #11151d;
+      --panel2: #151b25;
+      --line: #29313d;
+      --text: #f0f3f8;
+      --muted: #9ba7b8;
+      --accent: #8cf5c7;
+      --accent2: #8caaff;
+      --warm: #ffbd75;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; background:
+        radial-gradient(ellipse at 78% 3%, rgba(75,112,161,.15), transparent 32rem),
+        radial-gradient(ellipse at 6% 22%, rgba(57,160,123,.08), transparent 28rem),
+        var(--bg);
+      color: var(--text); font-family: Manrope, system-ui, sans-serif; line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(var(--max), calc(100% - 44px)); margin: 0 auto; }
+    .mono, .eyebrow, .tag, .nav-number { font-family: "DM Mono", monospace; letter-spacing: .06em; }
+    .mono, .eyebrow { text-transform: uppercase; font-size: .75rem; }
+    .eyebrow { color: var(--accent); display: flex; align-items: center; gap: 10px; }
+    .eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+    .muted { color: var(--muted); }
+    .section { padding: 100px 0; border-top: 1px solid rgba(255,255,255,.07); }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 38px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: clamp(2.2rem, 6vw, 5rem); line-height: .98; letter-spacing: -.075em; margin: 22px 0 25px; max-width: 850px; }
+    h1 span { color: var(--accent); }
+    h2 { font-size: clamp(2rem, 4vw, 3.3rem); line-height: 1.08; letter-spacing: -.055em; margin: 12px 0 0; }
+    h3 { font-size: 1.18rem; line-height: 1.3; margin-bottom: 10px; letter-spacing: -.025em; }
+    .lead { font-size: clamp(1.05rem, 2vw, 1.28rem); max-width: 700px; color: #c4cbd6; }
+    .small { font-size: .9rem; }
+    .topbar { position: sticky; top: 0; z-index: 20; background: rgba(9,11,16,.82); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: -.04em; white-space: nowrap; }
+    .brand-mark { width: 30px; height: 30px; border: 1px solid var(--accent); border-radius: 8px; display: grid; place-items: center; color: var(--accent); font-family: "DM Mono", monospace; font-size: .72rem; }
+    .navlinks { display: flex; gap: clamp(12px, 2.2vw, 28px); align-items: center; color: var(--muted); font-size: .82rem; }
+    .navlinks a:hover { color: var(--text); }
+    .nav-cta { border: 1px solid var(--line); border-radius: 999px; padding: 9px 15px; color: var(--text) !important; }
+    .hero { padding: 96px 0 80px; min-height: 690px; display: flex; align-items: center; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: 48px; align-items: center; }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero .lead { margin-bottom: 30px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 8px; padding: 13px 18px; font-size: .9rem; font-weight: 700; border: 1px solid var(--line); transition: transform .2s, border-color .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #07110d; background: var(--accent); border-color: var(--accent); }
+    .btn-primary:hover { color: #07110d; background: #b2ffdd; }
+    .btn-quiet:hover { border-color: var(--accent); }
+    .hero-art { min-height: 410px; border: 1px solid #2c3746; border-radius: 18px; background: linear-gradient(145deg, rgba(22,30,42,.95), rgba(11,14,20,.96)); padding: 22px; position: relative; overflow: hidden; box-shadow: 0 30px 100px rgba(0,0,0,.28); }
+    .art-top { display: flex; justify-content: space-between; color: var(--muted); font: .7rem "DM Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
+    .status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 7px; box-shadow: 0 0 12px rgba(140,245,199,.65); }
+    .scope { position: relative; height: 160px; margin: 28px 0 25px; border: 1px solid #293646; border-radius: 10px; background: repeating-linear-gradient(0deg, transparent 0 27px, rgba(145,170,195,.1) 28px), repeating-linear-gradient(90deg, transparent 0 38px, rgba(145,170,195,.1) 39px); overflow: hidden; }
+    .scope svg { width: 100%; height: 100%; }
+    .meters { display: grid; grid-template-columns: repeat(6, 1fr); gap: 9px; height: 126px; }
+    .meter { border: 1px solid #2a3442; border-radius: 7px; padding: 8px 6px; display: flex; flex-direction: column; align-items: center; justify-content: end; background: rgba(255,255,255,.015); }
+    .meter-label { color: var(--muted); font: .58rem "DM Mono", monospace; margin-bottom: 8px; }
+    .meter-track { width: 12px; height: 75px; border-radius: 3px; background: #202b35; display: flex; align-items: end; overflow: hidden; }
+    .meter-fill { width: 100%; border-radius: 3px; background: linear-gradient(to top, #4b9d7e, #8cf5c7 65%, #ffbd75); }
+    .meter:nth-child(1) .meter-fill { height: 67%; }.meter:nth-child(2) .meter-fill { height: 86%; }.meter:nth-child(3) .meter-fill { height: 52%; }.meter:nth-child(4) .meter-fill { height: 76%; }.meter:nth-child(5) .meter-fill { height: 42%; }.meter:nth-child(6) .meter-fill { height: 91%; }
+    .art-foot { display: flex; justify-content: space-between; color: #718096; font: .65rem "DM Mono", monospace; margin-top: 15px; }
+    .hero-bottom { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; color: var(--muted); font: .72rem "DM Mono", monospace; text-transform: uppercase; letter-spacing: .07em; }
+    .hero-bottom span::before { content: "↗"; color: var(--accent); margin-right: 8px; }
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+    .project { border: 1px solid var(--line); background: linear-gradient(145deg, rgba(19,24,33,.94), rgba(13,16,23,.95)); border-radius: 13px; padding: 25px; display: flex; flex-direction: column; min-height: 250px; transition: border-color .2s, transform .2s; }
+    .project:hover { border-color: #526477; transform: translateY(-3px); }
+    .project.featured { grid-column: span 2; display: grid; grid-template-columns: minmax(0,1.2fr) minmax(220px,.8fr); gap: 30px; min-height: 320px; }
+    .project-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; width: 100%; margin-bottom: 8px; }
+    /* The showcase copy uses align-items:flex-start, so explicitly stretch this row.
+       Auto margin keeps the type tag at the right even if it wraps to a new line. */
+    .showcase-copy .project-top { align-self: stretch; }
+    #project-type { margin-left: auto; margin-right: 0; }
+    .project-index { color: var(--accent); font: .72rem "DM Mono", monospace; }
+    .tag { display: inline-flex; border: 1px solid #354151; border-radius: 5px; padding: 5px 8px; color: #b8c4d3; font-size: .64rem; margin: 4px 4px 0 0; }
+    .project p { color: var(--muted); font-size: .94rem; }
+    .project-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: auto; padding-top: 22px; font-size: .84rem; font-weight: 700; }
+    .project-links a { color: var(--accent); }
+    .project-links a::after { content: " ↗"; }
+    .project-note { border-left: 1px solid #344251; padding-left: 22px; display: flex; flex-direction: column; justify-content: center; }
+    .project-note .big-stat { font-size: 2rem; line-height: 1.2; letter-spacing: -.05em; font-weight: 800; color: var(--accent); }
+    .project-note p { font-size: .82rem; }
+    .skill-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+    .skill { padding: 22px; border: 1px solid var(--line); border-radius: 11px; background: rgba(255,255,255,.018); }
+    .skill-icon { width: 38px; height: 38px; border-radius: 9px; border: 1px solid #3b4a5c; color: var(--accent); display: grid; place-items: center; font: .8rem "DM Mono", monospace; margin-bottom: 18px; }
+    .skill p { color: var(--muted); font-size: .88rem; margin-bottom: 0; }
+    .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .stack span { color: #c3ccda; background: #151c26; border: 1px solid #2a3543; padding: 7px 11px; border-radius: 6px; font: .72rem "DM Mono", monospace; }
+    .mix-effects { display: grid; grid-template-columns: repeat(6,1fr); gap: 8px; margin: 22px 0; }
+    .effect { padding: 14px 6px; text-align: center; border: 1px solid #344151; border-radius: 7px; background: #111821; }
+    .effect b { display: block; font: .72rem "DM Mono", monospace; color: var(--accent); }
+    .effect span { display: block; font-size: .66rem; color: var(--muted); margin-top: 4px; }
+    .split { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0,1.1fr); gap: 54px; align-items: start; }
+    .feature-list { list-style: none; padding: 0; margin: 0; }
+    .feature-list li { padding: 17px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 26px 1fr; gap: 12px; }
+    .feature-list li::before { content: "↗"; color: var(--accent); font-family: "DM Mono", monospace; }
+    .feature-list strong { display: block; font-size: .94rem; margin-bottom: 4px; }
+    .feature-list span { color: var(--muted); font-size: .85rem; }
+    .music-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
+    .music-card { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel); }
+    .music-art { aspect-ratio: 1.45; background: radial-gradient(circle at 70% 25%, rgba(140,245,199,.18), transparent 30%), linear-gradient(140deg,#202d3b,#10141b 65%); display: grid; place-items: center; border-bottom: 1px solid var(--line); position: relative; }
+    .music-art::before { content: ""; position: absolute; inset: 18px; border: 1px solid rgba(140,245,199,.28); border-radius: 50%; transform: scaleX(.8); }
+    .music-art::after { content: ""; width: 72px; height: 72px; border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 35px rgba(140,245,199,.1), inset 0 0 25px rgba(140,245,199,.08); }
+    .music-body { padding: 20px; }
+    .music-body p { font-size: .86rem; color: var(--muted); }
+    .music-body a { color: var(--accent); font-weight: 700; font-size: .85rem; }
+    .contact-panel { padding: clamp(28px,5vw,55px); border: 1px solid #344251; border-radius: 16px; background: radial-gradient(ellipse at 100% 0%, rgba(140,170,255,.12), transparent 45%), linear-gradient(140deg,#141b25,#0e1219); display: flex; justify-content: space-between; align-items: end; gap: 32px; }
+    .contact-panel h2 { max-width: 650px; }
+    footer { border-top: 1px solid rgba(255,255,255,.08); padding: 25px 0; color: var(--muted); font-size: .78rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .disclaimer { color: #758195; font-size: .78rem; margin-top: 18px; }
+    .showcase { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: linear-gradient(145deg, rgba(19,24,33,.97), rgba(13,16,23,.98)); }
+    .showcase-tabs { display: flex; gap: 0; overflow-x: auto; border-bottom: 1px solid var(--line); scrollbar-width: thin; }
+    .showcase-tab { flex: 0 0 auto; border: 0; border-right: 1px solid rgba(255,255,255,.04); background: transparent; color: var(--muted); padding: 16px 18px; font: .76rem "DM Mono", monospace; cursor: pointer; white-space: nowrap; }
+    .showcase-tab:hover, .showcase-tab.is-active { color: var(--accent); background: rgba(140,245,199,.055); }
+    .showcase-tab.is-active { box-shadow: inset 0 -2px var(--accent); }
+    .showcase-panel { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,.95fr); gap: 0; min-height: 360px; }
+    .showcase-media { min-height: 360px; background: radial-gradient(ellipse at 50% 35%, rgba(140,170,255,.12), transparent 55%), #0d1118; border-right: 1px solid var(--line); display: grid; place-items: center; padding: 28px; }
+    .media-placeholder { width: 100%; min-height: 270px; border: 1px dashed #425164; border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 10px; padding: 24px; color: var(--muted); }
+    .media-placeholder strong { color: #d7deea; font-size: .95rem; }
+    .media-placeholder span:last-child { max-width: 280px; font-size: .8rem; }
+    .media-icon { color: var(--accent); font-size: 2rem; }
+    .showcase-media img, .showcase-media video { width: 100%; height: 100%; max-height: 450px; object-fit: contain; border-radius: 7px; }
+    .showcase-copy { padding: clamp(22px,3.2vw,38px); display: flex; flex-direction: column; align-items: flex-start; }
+    .showcase-copy h3 { font-size: clamp(1.5rem,3vw,2.2rem); letter-spacing: -.045em; margin-bottom: 14px; }
+    .showcase-copy > p { color: var(--muted); font-size: .92rem; }
+    .role-note { color: #d7deea !important; border-left: 2px solid var(--accent); padding-left: 12px; font-size: .82rem !important; }
+    .showcase-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; margin-top: auto; padding-top: 26px; }
+    .showcase-arrow { border: 1px solid var(--line); background: transparent; color: var(--text); border-radius: 7px; padding: 9px 11px; cursor: pointer; font: .75rem "DM Mono", monospace; }
+    .showcase-arrow:hover { border-color: var(--accent); color: var(--accent); }
+    .showcase-dots { display: flex; align-items: center; gap: 7px; }
+    .showcase-dot { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; background: #455263; cursor: pointer; }
+    .showcase-dot.is-active { background: var(--accent); box-shadow: 0 0 0 4px rgba(140,245,199,.12); }
+    .four-skills { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .skill .stack { margin-top: 16px; gap: 5px; }
+    .skill .stack span { font-size: .65rem; padding: 5px 7px; }
+
+    @media (max-width: 850px) {
+      .hero-grid, .split { grid-template-columns: 1fr; }
+      .hero { padding-top: 70px; }
+      .hero-art { min-height: 350px; }
+      .skill-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .music-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .project.featured { grid-template-columns: 1fr; }
+      .showcase-panel { grid-template-columns: 1fr; }
+      .showcase-media { min-height: 260px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .media-placeholder { min-height: 200px; }
+      .project-note { border-left: 0; border-top: 1px solid #344251; padding: 20px 0 0; }
+      .section { padding: 76px 0; }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: min(var(--max), calc(100% - 30px)); }
+      .nav { min-height: 64px; }
+      .navlinks { gap: 12px; font-size: .72rem; }
+      .navlinks a:not(.nav-cta) { display: none; }
+      .hero { min-height: auto; padding: 68px 0 54px; }
+      h1 { font-size: clamp(3.2rem, 16vw, 5rem); }
+      .hero-art { min-height: 320px; padding: 15px; }
+      .meters { gap: 5px; }
+      .cards, .skill-grid, .music-grid, .four-skills { grid-template-columns: 1fr; }
+      .showcase-tab { padding: 13px 14px; }
+      .showcase-media { min-height: 220px; padding: 16px; }
+      .showcase-copy { padding: 12px; }
+      .showcase-controls { flex-wrap: wrap; }
+      .showcase-arrow span { display: none; }
+      .project.featured { grid-column: span 1; }
+      .section-head, .contact-panel { align-items: start; flex-direction: column; }
+      .mix-effects { grid-template-columns: repeat(3,1fr); }
+      .hero-bottom { gap: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="5AMX home"><span class="brand-mark">♫</span><span>5AMX ><span class="muted">> SAMUEL MARTINEZ ACUÑA</span></span></a>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="#software">Software</a>
+        <a href="#design">Design</a>
+        <a href="#music">Music</a>
+        <a class="nav-cta" href="#contact">Contact ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">About Me</div>
+            <h1>Audio is the craft.<br><span>Software is the instrument.</span></h1>
+            <p class="lead">I'm an Audio Software Engineer that builds Audio Applications for Desktop, Mobile and Digital Audio Workstations (as Plug-Ins), taking care of all the components like Audio Workflow, Graphical Interfaces, Hardware Interactions, File Management, and so on.<br>My work also spans Technical Sound Design (Game Development and Interactive Audio), and Musical Production.</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="#software">Explore selected work <span>↘</span></a>
+              <a class="btn btn-quiet" href="#contact">Get in touch <span>↗</span></a>
+            </div>
+            <div class="hero-bottom">
+              <span>Audio Software Creation</span><span>Technical Sound Design</span><span>Musical Production</span>
+            </div>
+          </div>
+          <div class="hero-art" aria-label="Decorative audio meter and waveform illustration">
+            <div class="art-top"><span><i class="status-dot"></i>Signal monitor</span><span>CH 01—06</span></div>
+            <div class="scope">
+              <svg viewBox="0 0 600 180" preserveAspectRatio="none" role="img" aria-label="Stylized waveform">
+                <defs><linearGradient id="wave" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8caaff"/><stop offset=".55" stop-color="#8cf5c7"/><stop offset="1" stop-color="#8caaff"/></linearGradient></defs>
+                <path d="M0 90 L20 90 L30 72 L38 113 L48 42 L58 135 L68 67 L78 90 L93 90 L103 78 L113 98 L123 25 L133 151 L143 63 L153 90 L169 90 L179 81 L189 100 L199 50 L209 120 L219 90 L235 90 L245 69 L255 111 L265 33 L275 147 L285 57 L295 90 L310 90 L320 77 L330 101 L340 18 L350 157 L360 59 L370 90 L385 90 L395 70 L405 110 L415 45 L425 130 L435 90 L450 90 L460 81 L470 99 L480 37 L490 143 L500 64 L510 90 L530 90 L540 74 L550 106 L560 55 L570 124 L580 90 L600 90" fill="none" stroke="url(#wave)" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M0 90 H600" stroke="#718096" stroke-opacity=".35" stroke-dasharray="4 7"/>
+              </svg>
+            </div>
+            <div class="meters">
+              <div class="meter"><span class="meter-label">IN 01</span><div class="meter-track"><div class="meter-fill"></div></div></div>
+              <div class="meter"><span class="meter-label">IN 02</span><div class="meter-track"><div class="meter-fill"></div></div></div>
+              <div class="meter"><span class="meter-label">BUS A</span><div class="meter-track"><div class="meter-fill"></div></div></div>
+              <div class="meter"><span class="meter-label">BUS B</span><div class="meter-track"><div class="meter-fill"></div></div></div>
+              <div class="meter"><span class="meter-label">FX 01</span><div class="meter-track"><div class="meter-fill"></div></div></div>
+              <div class="meter"><span class="meter-label">OUT</span><div class="meter-track"><div class="meter-fill"></div></div></div>
+            </div>
+            <div class="art-foot"><span>PEAK HOLD: OFF</span><span>OUTPUT: -06.2 DB</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="software">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">01 / Acoustic Tools Development</div><h2>Audio Software Creation</h2></div>
+          <p class="muted" style="max-width:500px; text-align:center;">Audio applications and plugins built around a sound workflow synchronized with user-friendly components and a featured graphical experience.</p>
+        </div>
+
+        <div class="showcase" aria-label="Selected audio software projects" style="margin-top:30px">
+          <div class="showcase-tabs" role="tablist" aria-label="Choose a project">
+            <button class="showcase-tab is-active" role="tab" aria-selected="true" aria-controls="project-panel" data-project="0">Kernel — Novelists</button>
+            <button class="showcase-tab" role="tab" aria-selected="false" aria-controls="project-panel" data-project="1">Noise Reduction - BetterSound</button>
+            <button class="showcase-tab" role="tab" aria-selected="false" aria-controls="project-panel" data-project="2">TAF — Marco Sfogli</button>
+            <button class="showcase-tab" role="tab" aria-selected="false" aria-controls="project-panel" data-project="3">Hailstone — Giacomo Pasquali</button>
+            <button class="showcase-tab" role="tab" aria-selected="false" aria-controls="project-panel" data-project="4">Spatial Mixing - AXYZ</button>
+          </div>
+          <article class="showcase-panel" id="project-panel" role="tabpanel" tabindex="0">
+            <div class="showcase-media" id="project-media"><div class="media-placeholder"><span class="media-icon">◉</span><strong>Project media goes here</strong><span>Add an approved screenshot, product image, or short demo video.</span></div></div>
+            <div class="showcase-copy">
+              <div class="project-top"><span class="project-index" id="project-number">PROJECT 01 / 05</span><span class="tag" id="project-type">Guitar plugin</span></div>
+              <h3 id="project-title">Kernel — Novelists</h3>
+              <p id="project-description">A guitar plugin developed for the french metal band Novelists, that includes a Tuner, Gate, Overdrive, Ring Modulator and a Tube Screamer Amp Simulator with 4 different Cabinets.</p>
+              <p class="role-note" id="project-role">Main Developer.</p>
+              <div class="project-links" id="project-links"><a href="https://www.novelists.store/collections/old-collections" target="_blank" rel="noreferrer">Product / store</a></div>
+              <div class="showcase-controls"><button class="showcase-arrow" type="button" id="project-prev" aria-label="Previous project">← <span>Previous</span></button><div class="showcase-dots" aria-label="Project position"><button class="showcase-dot is-active" type="button" data-project="0" aria-label="Show project 1" aria-current="true"></button><button class="showcase-dot" type="button" data-project="1" aria-label="Show project 2"></button><button class="showcase-dot" type="button" data-project="2" aria-label="Show project 3"></button><button class="showcase-dot" type="button" data-project="3" aria-label="Show project 4"></button><button class="showcase-dot" type="button" data-project="4" aria-label="Show project 5"></button></div><button class="showcase-arrow" type="button" id="project-next" aria-label="Next project"><span>Next</span> →</button></div>
+            </div>
+          </article>
+        </div>
+        
+        <div class="split" style="margin-top:30px">
+        <ul class="feature-list">
+          <li><div><strong>Cross-Platform Development</strong><span>Audio software across desktop, mobile, and DAW plugin formats (VST3, AU, AAX), including necessary tools to install.</span></div></li>
+          <li><div><strong>DSP & Audio Processing</strong><span>Audio-focused development and processing behavior with the adequate signal workflow and the effects required (Reverbs, Delays, EQ, etc.)</span></div></li>
+        </ul>
+        <ul class="feature-list">
+          <li><div><strong>Files Management and Hardware Interaction</strong><span>Operations with files related to audio (Impulse Responses, Midi, Samples, etc.) and  handling of external devices (Midi Keyboards, Guitars, Mics, Sysex Messages, and so on).</span></div></li>
+          <li><div><strong>Custom Audio GUI & Graphics</strong><span>Custom-drawn components, animated elements, audio-driven interfaces, complex visual behavior, OpenGL rendering, and practical asset adaptation.</span></div></li>
+        </ul>
+        </div>
+        <div class="stack"><span>C++</span><span>Juce</span><span>DAWs</span><span>Figma</span><span>OpenGL</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="design">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">02 / Interactive audio</div><h2>Technical Sound Design</h2></div>
+          <p class="muted" style="max-width:500px; text-align:center;">Games & apps powered by an smart and adequate audio design, that boosts all elements with its implementation.</p>
+        </div>
+        <article class="project featured">
+          <div>
+            
+            <div class="project-top"><span class="project-index">FEATURED PROJECT</span><span class="tag">Published Mobile Game</span></div>
+            
+            <h3>Mix Master — Sonically</h3>
+            <p id="project-description">Mix Master is a Unity-C# mobile educational game that teaches audio-mixing concepts through an interactive simulation of a mixing console, multiple tracks, and effect controls.
+                <br>
+                The experience also simulates plugin-style interactions inspired by a DAW, within the capabilities of the FMOD integration.
+                <br>
+                My role began in technical sound design and expanded into gameplay programming, UI, shaders, and other systems.</p>
+                <div class="media-placeholder"><span class="media-icon">◉</span><strong>Project media goes here</strong><span>Add an approved screenshot, product image, or short demo video.</span></div>
+          </div>
+          <aside class="project-note">
+              <div class="big-stat" style="margin-top:18px">3 Game Modes</div>
+              <p>Training, Mutiplayer and Mix Maker. Users can learn audio and mixing basics, compete versus other users, and build their own mix in a basic DAW simulator.</p>
+            <div class="big-stat" style="margin-top:18px">6 Main Effects</div>
+            <p>Gain, Pan, Reverb, Delay, EQ, and Compression; presented through an interactive mixing-console simulation. These effects have 4 tier levels and derived plug-ins.</p>
+            <div class="big-stat" style="margin-top:18px">UI & Shaders</div>
+            <p>Audio behavior is connected to the game's controls and visual feedback, including meters, waveforms, sliders, knobs, and other interactive elements.</p>
+            <div class="project-links">
+              <a href="https://play.google.com/store/apps/details?id=com.Sonically.MixMaster&hl=en" target="_blank" rel="noreferrer">Google Play</a>
+              <a href="https://apps.apple.com/ae/app/mix-master-audio-mixing-game/id1556524861" target="_blank" rel="noreferrer">App Store</a>
+              <a href="https://www.sonical.ly/" target="_blank" rel="noreferrer">Sonically</a>
+            </div>
+          </aside>
+        </article>
+        <div class="split" style="margin-top:28px">
+          <div>
+            <h3 style="font-size:1.5rem;margin-top:18px">Additional experience on Audio Integration</h3>
+            <p class="muted">I have developed audio design and implementation to other applications of diverse clients, most of them in collaboration with Pixzelle and Sondelli Guitars.</p>
+            <div class="project-links">
+            <a href="https://pixzelle.mx/en" target="_blank" rel="noreferrer">Pixzelle</a>
+            <a href="https://sondelli.com/" target="_blank" rel="noreferrer">Sondelli Guitars</a>
+            </div>
+          </div>
+          <ul class="feature-list">
+            <li><div><strong>Interactive Audio Systems</strong><span>Audio parameters and states connected to gameplay and interface behavion. Creating a synchronization between audio, graphics and user actions. /span></div></li>
+            <li><div><strong>Audio Assets</strong><span>Elements like Songs, SFX, Foleys and other related assets are implemented smartly, enriching the game/app experience.</span></div></li>
+          </ul>
+        </div>
+        <div class="stack"><span>Unity</span><span>C#</span><span>FMOD</span><span>Wwise</span><span>Unreal</span><span>Swift</span><span>Java</span><span>Flutter</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="music">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">03 / Music As A Service</div><h2>Musical Production</h2></div>
+          <p class="muted" style="max-width:500px; text-align:center;">Years of experience as a keyboard player, music and SFX producer, occasional vocalist, and social media & live performer.</p>
+        </div>
+        <div class="music-grid">
+          <article class="music-card">
+            <div class="music-art" aria-hidden="true"></div>
+            <div class="music-body"><h3>Unu</h3><p>An album collecting original songs I produced from collaborative projects and technical sound designer demonstrations.</p><a href="https://open.spotify.com/album/0Ot7lsiCLlMgmnG2ZT0FOU?si=SVghzbQHSEqy9Wklb1ENJg" target="_blank" rel="noreferrer">Listen on Spotify ↗</a></div>
+          </article>
+          <article class="music-card">
+            <div class="music-art" aria-hidden="true"></div>
+            <div class="music-body"><h3>La Vida De Nuevo Empezó</h3><p>A forthcoming album of original songs. It is in progress and it will be released in the next months.</p><span class="muted small">Upcoming release</span></div>
+          </article>
+          <article class="music-card">
+            <div class="music-art" aria-hidden="true"></div>
+            <div class="music-body"><h3>Musical Performances</h3><p>Rehearses and live performances of keyboard songs (and occasionaly with vocals too). Covers, original music, and other interesting stuff.</p><a href="https://www.youtube.com/@5amxMA" target="_blank" rel="noreferrer">YouTube ↗</a><br><a href="https://www.tiktok.com/@5_a_m_x" target="_blank" rel="noreferrer">TikTok ↗</a></div>
+          </article>
+        </div>
+        <div class="stack"><span>Musical Scores</span><span>Recordings</span><span>DAWs</span><span>Audio Production</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="contact-panel">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2>Have an audio product or service in mind?</h2>
+            <p class="lead" style="margin:18px 0 0">Contact me, it will be a pleasure to make your idea alive!</p>
+          </div>
+          <div class="actions" style="margin-top:0">
+            <a class="btn btn-primary" href="https://github.com/5amx" target="_blank" rel="noreferrer">GitHub profile ↗</a>
+            <a class="btn btn-quiet" href="https://www.linkedin.com/in/samuel-martinez-acuna/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner"><span>© <span id="year">2026</span> 5AMX · Audio Software Engineer</span><span>Built with HTML, CSS & a little signal flow.</span></div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const projects = [
+      {title:"Kernel — Novelists",type:"Guitar Effects",description:"A Guitar Plug-In developed for the french metal band Novelists, that includes a Tuner, Gate, Overdrive, Ring Modulator and a Tube Screamer Amp Simulator with 4 different Cabinets.",role:"Main Developer.",links:[["Product / store","https://www.novelists.store/collections/old-collections"]],media:null},
+      {title:"Noise Reduction - BetterSound",type:"Vocal Noise Reduction",description:"A Noise Reduction Plug-In that works with a smart algorythm useful for podcasts and other voice recordings. Made for BetterSound, the company of the canadian filmmaker and composer Ryan Freeman.",role:"Main Developer.",links:[["BetterSound","https://bettersound.io/"]],media:null},
+      {title:"TAF — Marco Sfogli",type:"Chorus & Delay",description:"A Guitar Plug-In made for the italian metal guitarrist Marco Sfogli, for F-AudioLabs company. Consisting of a Guitar Chorus and a Double Delay that can create Ping-Pong and other great effects.",role:"Main Developer.",links:[["F-AudioLabs","https://f-audiolabs.com/"]],media:null},
+      {title:"Hailstone — Giacomo Pasquali",type:"IR Cabinet & Mic Simulator",description:"An Desktop App & Plug-In made for the italian musician and mixing engineer Giacomo Pascualli, for F-AudioLabs company. It is a World Class Impulse Response Collection that contains 2 slots that users can customize: Cabinets, Mics (and its position &n rotations) and multiple effects. An Special Mooer Edition was released too.",role:"Main Developer.",links:[["F-AudioLabs","https://f-audiolabs.com/"]],media:null},
+      {title:"Spatial Mixing - AXYZ",type:"3D Spatial Mixing",description:"A collaborative team project that consists of a Spatial Audio Mixing Plug-In that represents tracks with 3D planets, using slave and master instances to have a straightforward control of independent tracks (with their effects) and overall mix.",role:"Front-End Developer.",links:[["AXYZ Innovations","https://axyzinnovations.com/"]],media:null}
+    ];
+    let activeProject=0;
+    const tabs=[...document.querySelectorAll(".showcase-tab")], dots=[...document.querySelectorAll(".showcase-dot")], media=document.getElementById("project-media");
+    function renderProject(index){
+      activeProject=(index+projects.length)%projects.length; const p=projects[activeProject];
+      document.getElementById("project-number").textContent=`PROJECT ${String(activeProject+1).padStart(2,"0")} / ${String(projects.length).padStart(2,"0")}`;
+      document.getElementById("project-type").textContent=p.type; document.getElementById("project-title").textContent=p.title;
+      document.getElementById("project-description").textContent=p.description; document.getElementById("project-role").textContent=p.role;
+      const links=document.getElementById("project-links"); links.replaceChildren(); p.links.forEach(([label,url])=>{const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noreferrer";a.textContent=label;links.appendChild(a);});
+      media.replaceChildren();
+      if(p.media){const el=document.createElement(p.media.endsWith(".mp4")?"video":"img");el.src=p.media;if(el.tagName==="VIDEO"){el.controls=true;el.playsInline=true;}else el.alt=`${p.title} project media`;media.appendChild(el);}
+      else {const box=document.createElement("div");box.className="media-placeholder";box.innerHTML='<span class="media-icon">◉</span><strong>Project media goes here</strong><span>Add an approved screenshot, product image, or short demo video.</span>';media.appendChild(box);}
+      tabs.forEach((t,i)=>{const selected=i===activeProject;t.classList.toggle("is-active",selected);t.setAttribute("aria-selected",String(selected));t.tabIndex=selected?0:-1;});
+      dots.forEach((d,i)=>{const selected=i===activeProject;d.classList.toggle("is-active",selected);if(selected)d.setAttribute("aria-current","true");else d.removeAttribute("aria-current");});
+    }
+    tabs.forEach(t=>t.addEventListener("click",()=>renderProject(Number(t.dataset.project))));dots.forEach(d=>d.addEventListener("click",()=>renderProject(Number(d.dataset.project))));
+    document.getElementById("project-prev").addEventListener("click",()=>renderProject(activeProject-1));document.getElementById("project-next").addEventListener("click",()=>renderProject(activeProject+1));
+    document.addEventListener("keydown",e=>{if(document.activeElement?.classList?.contains("showcase-tab")){if(e.key==="ArrowRight")renderProject(activeProject+1);if(e.key==="ArrowLeft")renderProject(activeProject-1);}});
+    renderProject(0);
+  </script>
+</body>
+</html>
+
