@@ -90,10 +90,19 @@
        Auto margin keeps the type tag at the right even if it wraps to a new line. */
     .showcase-copy .project-top { align-self: stretch; }
     #project-type { margin-left: auto; margin-right: 0; }
-    .project-index { color: var(--accent); font: .72rem "DM Mono", monospace; }
+    .project-index,
+    .project-skills {
+      color: var(--accent);
+      font: .72rem "DM Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .project-skills {
+      text-align: left;
+    }
     .tag { display: inline-flex; border: 1px solid #354151; border-radius: 5px; padding: 5px 8px; color: #b8c4d3; font-size: .64rem; margin: 4px 4px 0 0; }
     .project p { color: var(--muted); font-size: .94rem; }
-    .project-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: auto; padding-top: 22px; font-size: .84rem; font-weight: 700; }
+    .project-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; padding-top: 8px; font-size: .84rem; font-weight: 700; }
     .project-links a { color: var(--accent); }
     .project-links a::after { content: " ↗"; }
     .project-note { border-left: 1px solid #344251; padding-left: 22px; display: flex; flex-direction: column; justify-content: center; }
@@ -259,31 +268,45 @@
             <button class="showcase-tab" role="tab" aria-selected="false" aria-controls="project-panel" data-project="2">TAF — Marco Sfogli</button>
             <button class="showcase-tab" role="tab" aria-selected="false" aria-controls="project-panel" data-project="3">Hailstone — Giacomo Pasquali</button>
             <button class="showcase-tab" role="tab" aria-selected="false" aria-controls="project-panel" data-project="4">Spatial Mixing - AXYZ</button>
+            <button class="showcase-tab" role="tab" aria-selected="false" aria-controls="project-panel" data-project="5">Other</button>
           </div>
           <article class="showcase-panel" id="project-panel" role="tabpanel" tabindex="0">
             <div class="showcase-media" id="project-media"><div class="media-placeholder"><span class="media-icon">◉</span><strong>Project media goes here</strong><span>Add an approved screenshot, product image, or short demo video.</span></div></div>
             <div class="showcase-copy">
-              <div class="project-top"><span class="project-index" id="project-number">PROJECT 01 / 05</span><span class="tag" id="project-type">Guitar plugin</span></div>
+                <div class="project-top">
+                  <span class="project-skills" id="project-skills">JUCE & C++ · JAVA</span>
+                  <span class="tag" id="project-type">Guitar plugin</span>
+                </div>
               <h3 id="project-title">Kernel — Novelists</h3>
               <p id="project-description">A guitar plugin developed for the french metal band Novelists, that includes a Tuner, Gate, Overdrive, Ring Modulator and a Tube Screamer Amp Simulator with 4 different Cabinets.</p>
               <p class="role-note" id="project-role">Main Developer.</p>
               <div class="project-links" id="project-links"><a href="https://www.novelists.store/collections/old-collections" target="_blank" rel="noreferrer">Product / store</a></div>
-              <div class="showcase-controls"><button class="showcase-arrow" type="button" id="project-prev" aria-label="Previous project">← <span>Previous</span></button><div class="showcase-dots" aria-label="Project position"><button class="showcase-dot is-active" type="button" data-project="0" aria-label="Show project 1" aria-current="true"></button><button class="showcase-dot" type="button" data-project="1" aria-label="Show project 2"></button><button class="showcase-dot" type="button" data-project="2" aria-label="Show project 3"></button><button class="showcase-dot" type="button" data-project="3" aria-label="Show project 4"></button><button class="showcase-dot" type="button" data-project="4" aria-label="Show project 5"></button></div><button class="showcase-arrow" type="button" id="project-next" aria-label="Next project"><span>Next</span> →</button></div>
+              <div class="showcase-controls"><button class="showcase-arrow" type="button" id="project-prev" aria-label="Previous project">← <span>Previous</span></button>
+                  <div class="showcase-dots" aria-label="Project position">
+                      <button class="showcase-dot is-active" type="button" data-project="0" aria-label="Show project 1" aria-current="true"></button>
+                      <button class="showcase-dot" type="button" data-project="1" aria-label="Show project 2"></button>
+                      <button class="showcase-dot" type="button" data-project="2" aria-label="Show project 3"></button>
+                      <button class="showcase-dot" type="button" data-project="3" aria-label="Show project 4"></button>
+                      <button class="showcase-dot" type="button" data-project="4" aria-label="Show project 5"></button>
+                      <button class="showcase-dot" type="button" data-project="5" aria-label="Show project 6"></button>
+                  </div>
+                  <button class="showcase-arrow" type="button" id="project-next" aria-label="Next project"><span>Next</span> →</button>
+              </div>
             </div>
           </article>
         </div>
         
         <div class="split" style="margin-top:30px">
         <ul class="feature-list">
-          <li><div><strong>Cross-Platform Development</strong><span>Audio software across desktop, mobile, and DAW plugin formats (VST3, AU, AAX), including necessary tools to install.</span></div></li>
-          <li><div><strong>DSP & Audio Processing</strong><span>Audio-focused development and processing behavior with the adequate signal workflow and the effects required (Reverbs, Delays, EQ, etc.)</span></div></li>
+          <li><div><strong>Cross-Platform Development</strong><span>Audio software across desktop, mobile, and DAW plugin formats (VST3, AU, AAX), including necessary tools to install. I manage all the main Digital Audio Workstations, and I'm certified in Logic Pro DAW by Apple.</span></div></li>
+          <li><div><strong>DSP & Audio Processing</strong><span>Audio-focused development and processing behavior with the adequate signal workflow and the effects required (Reverbs, Delays, EQ, Modulations, Compressors, etc.)</span></div></li>
         </ul>
         <ul class="feature-list">
-          <li><div><strong>Files Management and Hardware Interaction</strong><span>Operations with files related to audio (Impulse Responses, Midi, Samples, etc.) and  handling of external devices (Midi Keyboards, Guitars, Mics, Sysex Messages, and so on).</span></div></li>
-          <li><div><strong>Custom Audio GUI & Graphics</strong><span>Custom-drawn components, animated elements, audio-driven interfaces, complex visual behavior, OpenGL rendering, and practical asset adaptation.</span></div></li>
+          <li><div><strong>Files Management and Hardware Interaction</strong><span>Application can contain Operations with files related to audio (Impulse Responses, MIDI, Samples, etc.) and  handling of external devices (MIDI Keyboards, Guitars, Microphones, Sysex Messages, Mixing Consoles, and so on).</span></div></li>
+          <li><div><strong>Custom Audio GUI & Graphics</strong><span>Custom-drawn components, animated elements, audio-driven interfaces, complex visual behavior, OpenGL rendering, and practical asset adaptation from Figma, Canva, Photoshop, Gimp or any other UI/UX or Graphic Design app.</span></div></li>
         </ul>
         </div>
-        <div class="stack"><span>C++</span><span>Juce</span><span>DAWs</span><span>Figma</span><span>OpenGL</span></div>
+        <div class="stack"><span>JUCE & C++</span><span>OpenGL</span><span>Java</span></div>
       </div>
     </section>
 
@@ -296,13 +319,11 @@
         <article class="project featured">
           <div>
             
-            <div class="project-top"><span class="project-index">FEATURED PROJECT</span><span class="tag">Published Mobile Game</span></div>
+            <div class="project-top"><span class="project-skills">Unity & C# · FMOD</span><span class="tag">Mixing Learning Mobile Game</span></div>
             
-            <h3>Mix Master — Sonically</h3>
-            <p id="project-description">Mix Master is a Unity-C# mobile educational game that teaches audio-mixing concepts through an interactive simulation of a mixing console, multiple tracks, and effect controls.
-                <br>
+            <h3>Mix Master — Sonical.ly</h3>
+            <p id="project-description">Mix Master is an educational game for Android & iOS that teaches audio-mixing concepts through an interactive simulation of a mixing console, multiple tracks, and effect controls.
                 The experience also simulates plugin-style interactions inspired by a DAW, within the capabilities of the FMOD integration.
-                <br>
                 My role began in technical sound design and expanded into gameplay programming, UI, shaders, and other systems.</p>
                 <div class="media-placeholder"><span class="media-icon">◉</span><strong>Project media goes here</strong><span>Add an approved screenshot, product image, or short demo video.</span></div>
           </div>
@@ -313,28 +334,32 @@
             <p>Gain, Pan, Reverb, Delay, EQ, and Compression; presented through an interactive mixing-console simulation. These effects have 4 tier levels and derived plug-ins.</p>
             <div class="big-stat" style="margin-top:18px">UI & Shaders</div>
             <p>Audio behavior is connected to the game's controls and visual feedback, including meters, waveforms, sliders, knobs, and other interactive elements.</p>
+            <p class="role-note" id="project-role" style="margin-top:18px">Front-End and Audio Developer.</p>
             <div class="project-links">
               <a href="https://play.google.com/store/apps/details?id=com.Sonically.MixMaster&hl=en" target="_blank" rel="noreferrer">Google Play</a>
               <a href="https://apps.apple.com/ae/app/mix-master-audio-mixing-game/id1556524861" target="_blank" rel="noreferrer">App Store</a>
-              <a href="https://www.sonical.ly/" target="_blank" rel="noreferrer">Sonically</a>
+              <a href="https://www.sonical.ly/" target="_blank" rel="noreferrer">Sonical.ly</a>
             </div>
           </aside>
         </article>
         <div class="split" style="margin-top:28px">
           <div>
-            <h3 style="font-size:1.5rem;margin-top:18px">Additional experience on Audio Integration</h3>
-            <p class="muted">I have developed audio design and implementation to other applications of diverse clients, most of them in collaboration with Pixzelle and Sondelli Guitars.</p>
+            <div class="project-top"><span class="project-skills">Unity · FMOD · Wwise · Unreal · SwiftUI · Flutter</span><span class="tag">Other</span></div>
+            <h3 style="font-size:1.5rem;margin-top:18px">Additional Experience on Audio Integration</h3>
+            <p class="muted">Audio design and implementation for software of diverse clients, mainly for Pixzelle and Sondelli Guitars. Some Demos included.</p>
+            <p class="role-note" id="project-role">Technical Sound Designer.</p>
             <div class="project-links">
             <a href="https://pixzelle.mx/en" target="_blank" rel="noreferrer">Pixzelle</a>
             <a href="https://sondelli.com/" target="_blank" rel="noreferrer">Sondelli Guitars</a>
+            <a href="https://youtube.com/playlist?list=PL_w-v80hrjMJSnTuSzULB6KoJJLazH-uC&si=--H0Sg05Ovj4_m_J" target="_blank" rel="noreferrer">Demos</a>
             </div>
           </div>
           <ul class="feature-list">
-            <li><div><strong>Interactive Audio Systems</strong><span>Audio parameters and states connected to gameplay and interface behavion. Creating a synchronization between audio, graphics and user actions. /span></div></li>
+            <li><div><strong>Interactive Audio Systems</strong><span>Audio parameters and states connected to gameplay and interface behavion. Creating a synchronization between audio, graphics and user actions.</span></div></li>
             <li><div><strong>Audio Assets</strong><span>Elements like Songs, SFX, Foleys and other related assets are implemented smartly, enriching the game/app experience.</span></div></li>
           </ul>
         </div>
-        <div class="stack"><span>Unity</span><span>C#</span><span>FMOD</span><span>Wwise</span><span>Unreal</span><span>Swift</span><span>Java</span><span>Flutter</span></div>
+        <div class="stack"><span>Unity & C#</span><span>FMOD</span><span>Wwise</span><span>Unreal</span><span>SwiftUI</span><span>Flutter</span></div>
       </div>
     </section>
 
@@ -358,8 +383,19 @@
             <div class="music-body"><h3>Musical Performances</h3><p>Rehearses and live performances of keyboard songs (and occasionaly with vocals too). Covers, original music, and other interesting stuff.</p><a href="https://www.youtube.com/@5amxMA" target="_blank" rel="noreferrer">YouTube ↗</a><br><a href="https://www.tiktok.com/@5_a_m_x" target="_blank" rel="noreferrer">TikTok ↗</a></div>
           </article>
         </div>
-        <div class="stack"><span>Musical Scores</span><span>Recordings</span><span>DAWs</span><span>Audio Production</span></div>
+        
+        <div class="split" style="margin-top:8px">
+        <ul class="feature-list">
+          <li><div><strong>Musical Scores & Arragements</strong><span>Creation of a song score. It could be in its original version or in a special arragement, considering all or only specific tracks.</span></div></li>
+        </ul>
+        <ul class="feature-list">
+          <li><div><strong>Files Management and Hardware Interaction</strong><span>Operations with files related to audio (Impulse Responses, Midi, Samples, etc.) and  handling of external devices (Midi Keyboards, Guitars, Mics, Sysex Messages, and so on).</span></div></li>
+        </ul>
+        </div>
+        <p>
+        <div class="stack"><span>Digital Audio Workstations</span><span>Score & Tab Software</span>
       </div>
+    
     </section>
 
     <section class="section" id="contact">
@@ -372,8 +408,8 @@
           </div>
           <div class="actions" style="margin-top:0">
             <a class="btn btn-primary" href="mailto:martinezasamuel@gmail.com">E-mail ↗</a>
-            <a class="btn btn-quiet" href="https://github.com/5amx" target="_blank" rel="noreferrer">GitHub ↗</a>
             <a class="btn btn-quiet" href="https://www.linkedin.com/in/samuel-martinez-acuna/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a class="btn btn-quiet" href="https://github.com/5amx" target="_blank" rel="noreferrer">GitHub ↗</a>
           </div>
         </div>
       </div>
@@ -386,17 +422,18 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     const projects = [
-      {title:"Kernel — Novelists",type:"Guitar Effects",description:"A Guitar Plug-In developed for the french metal band Novelists, that includes a Tuner, Gate, Overdrive, Ring Modulator and a Tube Screamer Amp Simulator with 4 different Cabinets.",role:"Main Developer.",links:[["Product / store","https://www.novelists.store/collections/old-collections"]],media:null},
-      {title:"Noise Reduction - BetterSound",type:"Vocal Noise Reduction",description:"A Noise Reduction Plug-In that works with a smart algorythm useful for podcasts and other voice recordings. Made for BetterSound, the company of the canadian filmmaker and composer Ryan Freeman.",role:"Main Developer.",links:[["BetterSound","https://bettersound.io/"]],media:null},
-      {title:"TAF — Marco Sfogli",type:"Chorus & Delay",description:"A Guitar Plug-In made for the italian metal guitarrist Marco Sfogli, for F-AudioLabs company. Consisting of a Guitar Chorus and a Double Delay that can create Ping-Pong and other great effects.",role:"Main Developer.",links:[["F-AudioLabs","https://f-audiolabs.com/"]],media:null},
-      {title:"Hailstone — Giacomo Pasquali",type:"IR Cabinet & Mic Simulator",description:"An Desktop App & Plug-In made for the italian musician and mixing engineer Giacomo Pascualli, for F-AudioLabs company. It is a World Class Impulse Response Collection that contains 2 slots that users can customize: Cabinets, Mics (and its position &n rotations) and multiple effects. An Special Mooer Edition was released too.",role:"Main Developer.",links:[["F-AudioLabs","https://f-audiolabs.com/"]],media:null},
-      {title:"Spatial Mixing - AXYZ",type:"3D Spatial Mixing",description:"A collaborative team project that consists of a Spatial Audio Mixing Plug-In that represents tracks with 3D planets, using slave and master instances to have a straightforward control of independent tracks (with their effects) and overall mix.",role:"Front-End Developer.",links:[["AXYZ Innovations","https://axyzinnovations.com/"]],media:null}
+      {title:"Kernel — Novelists",skills: "JUCE & C++",type:"Guitar Effects",description:"A Guitar Plug-In developed for the french metal band Novelists, that includes a Tuner, Gate, Overdrive, Ring Modulator and a Tube Screamer Amp Simulator with 4 different Cabinets.",role:"Main Developer.",links:[["Product / store","https://www.novelists.store/collections/old-collections"]],media:null},
+      {title:"Noise Reduction - BetterSound",skills: "JUCE & C++",type:"Vocal Noise Reduction",description:"A Noise Reduction Plug-In that works with a smart algorythm useful for podcasts and other voice recordings. Made for BetterSound, the company of the canadian filmmaker and composer Ryan Freeman.",role:"Main Developer.",links:[["BetterSound","https://bettersound.io/"]],media:null},
+      {title:"TAF — Marco Sfogli",skills: "JUCE & C++",type:"Chorus & Delay",description:"A Guitar Plug-In made for the italian metal guitarrist Marco Sfogli, for F-AudioLabs company. Consisting of a Guitar Chorus and a Double Delay that can create Ping-Pong and other great effects.",role:"Main Developer.",links:[["F-AudioLabs","https://f-audiolabs.com/"]],media:null},
+      {title:"Hailstone — Giacomo Pasquali",skills: "JUCE & C++",type:"IR Cabinet & Mic Simulator",description:"An Desktop App & Plug-In made for the italian musician and mixing engineer Giacomo Pascualli, for F-AudioLabs company. It is a World Class Impulse Response Collection that contains 2 slots that users can customize: Cabinets, Mics (and its position &n rotations) and multiple effects. An Special Mooer Edition was released too.",role:"Main Developer.",links:[["F-AudioLabs","https://f-audiolabs.com/"]],media:null},
+      {title:"Spatial Mixing - AXYZ",skills: "JUCE & C++ · OpenGL",type:"3D Spatial Mixing",description:"A collaborative team project that consists of a Spatial Audio Mixing Plug-In that represents tracks with 3D planets, using slave and master instances to have a straightforward control of independent tracks (with their effects) and overall mix.",role:"Front-End Developer.",links:[["AXYZ Innovations","https://axyzinnovations.com/"]],media:null},
+      {title:"Other Projects",skills: "JUCE & C++ · Java",type:"Other",description:"I have done more projects for diverse clients, involving multiple effects, samplers, digital instruments, etc. Also I created a Java Application to learn music for my Bachelor Degree Thesis.",role:"Main Developer.",links:[["Java Musical App","https://youtu.be/QAFVOuiy6Bs?si=Eigfchu1KP20vNAz"]],media:null}
     ];
     let activeProject=0;
     const tabs=[...document.querySelectorAll(".showcase-tab")], dots=[...document.querySelectorAll(".showcase-dot")], media=document.getElementById("project-media");
     function renderProject(index){
       activeProject=(index+projects.length)%projects.length; const p=projects[activeProject];
-      document.getElementById("project-number").textContent=`PROJECT ${String(activeProject+1).padStart(2,"0")} / ${String(projects.length).padStart(2,"0")}`;
+      document.getElementById("project-skills").textContent = p.skills;
       document.getElementById("project-type").textContent=p.type; document.getElementById("project-title").textContent=p.title;
       document.getElementById("project-description").textContent=p.description; document.getElementById("project-role").textContent=p.role;
       const links=document.getElementById("project-links"); links.replaceChildren(); p.links.forEach(([label,url])=>{const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noreferrer";a.textContent=label;links.appendChild(a);});
@@ -413,3 +450,4 @@
   </script>
 </body>
 </html>
+
