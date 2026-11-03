@@ -144,6 +144,20 @@
     .showcase-tab.is-active { box-shadow: inset 0 -2px var(--accent); }
     .showcase-panel { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,.95fr); gap: 0; min-height: 360px; }
     .showcase-media { min-height: 360px; background: radial-gradient(ellipse at 50% 35%, rgba(140,170,255,.12), transparent 55%), #0d1118; border-right: 1px solid var(--line); display: grid; place-items: center; padding: 28px; }
+
+    /* Mix Master image reel */
+    .mixmaster-reel { position: relative; width: 100%; margin-top: 18px; border: 1px solid #354151; border-radius: 10px; overflow: hidden; background: #0b1018; }
+    .mixmaster-reel-image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
+    .mixmaster-reel-control { position: absolute; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; background: rgba(9,11,16,.78); color: #fff; cursor: pointer; font-size: 1.25rem; display: grid; place-items: center; }
+    .mixmaster-reel-control:hover { border-color: var(--accent); color: var(--accent); }
+    .mixmaster-reel-prev { left: 12px; }
+    .mixmaster-reel-next { right: 12px; }
+    .mixmaster-reel-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 13px; border-top: 1px solid var(--line); }
+    .mixmaster-reel-caption { color: var(--muted); font: .68rem "DM Mono", monospace; }
+    .mixmaster-reel-dots { display: flex; align-items: center; gap: 7px; }
+    .mixmaster-reel-dot { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; background: #455263; cursor: pointer; }
+    .mixmaster-reel-dot.is-active { background: var(--accent); box-shadow: 0 0 0 4px rgba(140,245,199,.12); }
+
     .media-placeholder { width: 100%; min-height: 270px; border: 1px dashed #425164; border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 10px; padding: 24px; color: var(--muted); }
     .media-placeholder strong { color: #d7deea; font-size: .95rem; }
     .media-placeholder span:last-child { max-width: 280px; font-size: .8rem; }
@@ -325,7 +339,21 @@
             <p id="project-description">Mix Master is an educational game for Android & iOS that teaches audio-mixing concepts through an interactive simulation of a mixing console, multiple tracks, and effect controls.
                 The experience also simulates plugin-style interactions inspired by a DAW, within the capabilities of the FMOD integration.
                 My role began in technical sound design and expanded into gameplay programming, UI, shaders, and other systems.</p>
-                <div class="media-placeholder"><span class="media-icon">◉</span><strong>Project media goes here</strong><span>Add an approved screenshot, product image, or short demo video.</span></div>
+                <div class="mixmaster-reel" id="mixmaster-reel" aria-label="Mix Master screenshots slideshow">
+              <img class="mixmaster-reel-image" id="mixmaster-reel-image" src="images/design/mixmaster1.png" alt="Mix Master screenshot 1 of 5">
+              <button class="mixmaster-reel-control mixmaster-reel-prev" id="mixmaster-reel-prev" type="button" aria-label="Previous Mix Master image">‹</button>
+              <button class="mixmaster-reel-control mixmaster-reel-next" id="mixmaster-reel-next" type="button" aria-label="Next Mix Master image">›</button>
+              <div class="mixmaster-reel-footer">
+                <span class="mixmaster-reel-caption" id="mixmaster-reel-caption">IMAGE 01 / 05</span>
+                <div class="mixmaster-reel-dots" id="mixmaster-reel-dots" aria-label="Choose Mix Master image">
+                  <button class="mixmaster-reel-dot is-active" type="button" data-mixmaster-image="0" aria-label="Show image 1" aria-current="true"></button>
+                  <button class="mixmaster-reel-dot" type="button" data-mixmaster-image="1" aria-label="Show image 2"></button>
+                  <button class="mixmaster-reel-dot" type="button" data-mixmaster-image="2" aria-label="Show image 3"></button>
+                  <button class="mixmaster-reel-dot" type="button" data-mixmaster-image="3" aria-label="Show image 4"></button>
+                  <button class="mixmaster-reel-dot" type="button" data-mixmaster-image="4" aria-label="Show image 5"></button>
+                </div>
+              </div>
+            </div>
           </div>
           <aside class="project-note">
               <div class="big-stat" style="margin-top:18px">3 Game Modes</div>
@@ -421,21 +449,14 @@
   </footer>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    
     const projects = [
-      {title:"Kernel — Novelists",skills: "JUCE & C++",type:"Guitar Effects",description:"A Guitar Plug-In developed for the french metal band Novelists, that includes a Tuner, Gate, Overdrive, Ring Modulator and a Tube Screamer Amp Simulator with 4 different Cabinets.",role:"Main Developer.",links:[["Product / store","https://www.novelists.store/collections/old-collections"]],media:"images/software/kernel1.png"},
-
-      {title:"Noise Reduction - BetterSound",skills: "JUCE & C++",type:"Vocal Noise Reduction",description:"A Noise Reduction Plug-In that works with a smart algorythm useful for podcasts and other voice recordings. Made for BetterSound, the company of the canadian filmmaker and composer Ryan Freeman.",role:"Main Developer.",links:[["BetterSound","https://bettersound.io/"]],media:"images/software/dele1.png"},
-
-      {title:"TAF — Marco Sfogli",skills: "JUCE & C++",type:"Chorus & Delay",description:"A Guitar Plug-In made for the italian metal guitarrist Marco Sfogli, for F-AudioLabs company. Consisting of a Guitar Chorus and a Double Delay that can create Ping-Pong and other great effects.",role:"Main Developer.",links:[["F-AudioLabs","https://f-audiolabs.com/"]],media:"images/software/taf1.png"},
-
-      {title:"Hailstone — Giacomo Pasquali",skills: "JUCE & C++",type:"IR Cabinet & Mic Simulator",description:"An Desktop App & Plug-In made for the italian musician and mixing engineer Giacomo Pascualli, for F-AudioLabs company. It is a World Class Impulse Response Collection that contains 2 slots that users can customize: Cabinets, Mics (and its position &n rotations) and multiple effects. An Special Mooer Edition was released too.",role:"Main Developer.",links:[["F-AudioLabs","https://f-audiolabs.com/"]],media:"images/software/hailstone1.png"},
-
-      {title:"Spatial Mixing - AXYZ",skills: "JUCE & C++ · OpenGL",type:"3D Spatial Mixing",description:"A collaborative team project that consists of a Spatial Audio Mixing Plug-In that represents tracks with 3D planets, using slave and master instances to have a straightforward control of independent tracks (with their effects) and overall mix.",role:"Front-End Developer.",links:[["AXYZ Innovations","https://axyzinnovations.com/"]],media:"images/software/axyz1.png"},
-
-      {title:"Other Projects",skills: "JUCE & C++ · Java",type:"Other",description:"I have done more projects for diverse clients, involving multiple effects, samplers, digital instruments, etc. Also I created a Java Application to learn music for my Bachelor Degree Thesis.",role:"Main Developer.",links:[["Java Musical App","https://youtu.be/QAFVOuiy6Bs?si=Eigfchu1KP20vNAz"]],media:"images/software/plugincollection1.png"}
+      {title:"Kernel — Novelists",skills: "JUCE & C++",type:"Guitar Effects",description:"A Guitar Plug-In developed for the french metal band Novelists, that includes a Tuner, Gate, Overdrive, Ring Modulator and a Tube Screamer Amp Simulator with 4 different Cabinets.",role:"Main Developer.",links:[["Product / store","https://www.novelists.store/collections/old-collections"]],media:null},
+      {title:"Noise Reduction - BetterSound",skills: "JUCE & C++",type:"Vocal Noise Reduction",description:"A Noise Reduction Plug-In that works with a smart algorythm useful for podcasts and other voice recordings. Made for BetterSound, the company of the canadian filmmaker and composer Ryan Freeman.",role:"Main Developer.",links:[["BetterSound","https://bettersound.io/"]],media:null},
+      {title:"TAF — Marco Sfogli",skills: "JUCE & C++",type:"Chorus & Delay",description:"A Guitar Plug-In made for the italian metal guitarrist Marco Sfogli, for F-AudioLabs company. Consisting of a Guitar Chorus and a Double Delay that can create Ping-Pong and other great effects.",role:"Main Developer.",links:[["F-AudioLabs","https://f-audiolabs.com/"]],media:null},
+      {title:"Hailstone — Giacomo Pasquali",skills: "JUCE & C++",type:"IR Cabinet & Mic Simulator",description:"An Desktop App & Plug-In made for the italian musician and mixing engineer Giacomo Pascualli, for F-AudioLabs company. It is a World Class Impulse Response Collection that contains 2 slots that users can customize: Cabinets, Mics (and its position &n rotations) and multiple effects. An Special Mooer Edition was released too.",role:"Main Developer.",links:[["F-AudioLabs","https://f-audiolabs.com/"]],media:null},
+      {title:"Spatial Mixing - AXYZ",skills: "JUCE & C++ · OpenGL",type:"3D Spatial Mixing",description:"A collaborative team project that consists of a Spatial Audio Mixing Plug-In that represents tracks with 3D planets, using slave and master instances to have a straightforward control of independent tracks (with their effects) and overall mix.",role:"Front-End Developer.",links:[["AXYZ Innovations","https://axyzinnovations.com/"]],media:null},
+      {title:"Other Projects",skills: "JUCE & C++ · Java",type:"Other",description:"I have done more projects for diverse clients, involving multiple effects, samplers, digital instruments, etc. Also I created a Java Application to learn music for my Bachelor Degree Thesis.",role:"Main Developer.",links:[["Java Musical App","https://youtu.be/QAFVOuiy6Bs?si=Eigfchu1KP20vNAz"]],media:null}
     ];
-
     let activeProject=0;
     const tabs=[...document.querySelectorAll(".showcase-tab")], dots=[...document.querySelectorAll(".showcase-dot")], media=document.getElementById("project-media");
     function renderProject(index){
@@ -453,8 +474,62 @@
     tabs.forEach(t=>t.addEventListener("click",()=>renderProject(Number(t.dataset.project))));dots.forEach(d=>d.addEventListener("click",()=>renderProject(Number(d.dataset.project))));
     document.getElementById("project-prev").addEventListener("click",()=>renderProject(activeProject-1));document.getElementById("project-next").addEventListener("click",()=>renderProject(activeProject+1));
     document.addEventListener("keydown",e=>{if(document.activeElement?.classList?.contains("showcase-tab")){if(e.key==="ArrowRight")renderProject(activeProject+1);if(e.key==="ArrowLeft")renderProject(activeProject-1);}});
+
+    // Mix Master five-image slideshow (Section 2)
+    const mixMasterImages = [
+      "images/design/mixmaster1.png",
+      "images/design/mixmaster2.png",
+      "images/design/mixmaster3.png",
+      "images/design/mixmaster4.png",
+      "images/design/mixmaster5.png"
+    ];
+    const mixMasterImage = document.getElementById("mixmaster-reel-image");
+    const mixMasterCaption = document.getElementById("mixmaster-reel-caption");
+    const mixMasterDots = [...document.querySelectorAll("[data-mixmaster-image]")];
+    let activeMixMasterImage = 0;
+    let mixMasterTimer;
+
+    function showMixMasterImage(index) {
+      activeMixMasterImage = (index + mixMasterImages.length) % mixMasterImages.length;
+      mixMasterImage.src = mixMasterImages[activeMixMasterImage];
+      mixMasterImage.alt = `Mix Master screenshot ${activeMixMasterImage + 1} of ${mixMasterImages.length}`;
+      mixMasterCaption.textContent = `IMAGE ${String(activeMixMasterImage + 1).padStart(2, "0")} / ${String(mixMasterImages.length).padStart(2, "0")}`;
+      mixMasterDots.forEach((dot, i) => {
+        const selected = i === activeMixMasterImage;
+        dot.classList.toggle("is-active", selected);
+        if (selected) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+    }
+
+    function startMixMasterSlideshow() {
+      clearInterval(mixMasterTimer);
+      mixMasterTimer = setInterval(() => showMixMasterImage(activeMixMasterImage + 1), 5000);
+    }
+
+    document.getElementById("mixmaster-reel-prev").addEventListener("click", () => {
+      showMixMasterImage(activeMixMasterImage - 1);
+      startMixMasterSlideshow();
+    });
+    document.getElementById("mixmaster-reel-next").addEventListener("click", () => {
+      showMixMasterImage(activeMixMasterImage + 1);
+      startMixMasterSlideshow();
+    });
+    mixMasterDots.forEach(dot => dot.addEventListener("click", () => {
+      showMixMasterImage(Number(dot.dataset.mixmasterImage));
+      startMixMasterSlideshow();
+    }));
+
+    const mixMasterReel = document.getElementById("mixmaster-reel");
+    mixMasterReel.addEventListener("mouseenter", () => clearInterval(mixMasterTimer));
+    mixMasterReel.addEventListener("mouseleave", startMixMasterSlideshow);
+    mixMasterReel.addEventListener("focusin", () => clearInterval(mixMasterTimer));
+    mixMasterReel.addEventListener("focusout", startMixMasterSlideshow);
+    startMixMasterSlideshow();
+
     renderProject(0);
   </script>
 </body>
 </html>
+
 
