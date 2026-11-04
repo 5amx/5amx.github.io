@@ -126,9 +126,22 @@
     .feature-list span { color: var(--muted); font-size: .85rem; }
     .music-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
     .music-card { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel); }
-    .music-art { aspect-ratio: 1.45; background: radial-gradient(circle at 70% 25%, rgba(140,245,199,.18), transparent 30%), linear-gradient(140deg,#202d3b,#10141b 65%); display: grid; place-items: center; border-bottom: 1px solid var(--line); position: relative; }
-    .music-art::before { content: ""; position: absolute; inset: 18px; border: 1px solid rgba(140,245,199,.28); border-radius: 50%; transform: scaleX(.8); }
-    .music-art::after { content: ""; width: 72px; height: 72px; border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 35px rgba(140,245,199,.1), inset 0 0 25px rgba(140,245,199,.08); }
+    .music-art {
+      aspect-ratio: 1.45;
+      background: #10141b;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .music-art img {
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
     .music-body { padding: 20px; }
     .music-body p { font-size: .86rem; color: var(--muted); }
     .music-body a { color: var(--accent); font-weight: 700; font-size: .85rem; }
@@ -310,7 +323,7 @@
           </article>
         </div>
         
-        <div class="split" style="margin-top:30px">
+        <div class="split" style="margin-top:20px">
         <ul class="feature-list">
           <li><div><strong>Cross-Platform Development</strong><span>Audio software across desktop, mobile, and DAW plugin formats (VST3, AU, AAX), including necessary tools to install. I manage all the main Digital Audio Workstations, and I'm certified in Logic Pro DAW by Apple.</span></div></li>
           <li><div><strong>DSP & Audio Processing</strong><span>Audio-focused development and processing behavior with the adequate signal workflow and the effects required (Reverbs, Delays, EQ, Modulations, Compressors, etc.)</span></div></li>
@@ -336,8 +349,7 @@
             <div class="project-top"><span class="project-skills">Unity & C# · FMOD</span><span class="tag">Mixing Learning Mobile Game</span></div>
             
             <h3>Mix Master — Sonical.ly</h3>
-            <p id="project-description">Mix Master is an educational game for Android & iOS that teaches audio-mixing concepts through an interactive simulation of a mixing console, multiple tracks, and effect controls.
-                The experience also simulates plugin-style interactions inspired by a DAW, within the capabilities of the FMOD integration.
+            <p id="project-description">Mix Master is an educational game for Android & iOS that teaches audio-mixing concepts through an interactive simulation of a mixing console, multiple tracks, and effect controls within the capabilities of the FMOD integration.
                 My role began in technical sound design and expanded into gameplay programming, UI, shaders, and other systems.</p>
                 <div class="mixmaster-reel" id="mixmaster-reel" aria-label="Mix Master screenshots slideshow">
               <img class="mixmaster-reel-image" id="mixmaster-reel-image" src="images/design/mixmaster1.png" alt="Mix Master screenshot 1 of 5">
@@ -354,40 +366,61 @@
                 </div>
               </div>
             </div>
+                
+            <p class="role-note" id="project-role" style="margin-top:18px">Front-End and Audio Developer.</p>
+            <div class="project-links" style="margin-top:8px">
+              <a href="https://play.google.com/store/apps/details?id=com.Sonically.MixMaster&hl=en" target="_blank" rel="noreferrer">Google Play</a>
+              <a href="https://apps.apple.com/ae/app/mix-master-audio-mixing-game/id1556524861" target="_blank" rel="noreferrer">App Store</a>
+              <a href="https://www.sonical.ly/" target="_blank" rel="noreferrer">Sonical.ly</a>
+            </div>
+                
           </div>
           <aside class="project-note">
               <div class="big-stat" style="margin-top:18px">3 Game Modes</div>
               <p>Training, Mutiplayer and Mix Maker. Users can learn audio and mixing basics, compete versus other users, and build their own mix in a basic DAW simulator.</p>
             <div class="big-stat" style="margin-top:18px">6 Main Effects</div>
             <p>Gain, Pan, Reverb, Delay, EQ, and Compression; presented through an interactive mixing-console simulation. These effects have 4 tier levels and derived plug-ins.</p>
+            <div class="big-stat" style="margin-top:18px">DAW Plug-In Simulation</div>
+            <p>The experience also simulates plugin-style interactions inspired by a DAW, improving the main effects or introducing new ones like Chorus or Distortion.</p>
+            <div class="big-stat" style="margin-top:18px">Songs Player Controller</div>
+            <p>This game allows you to use multiple songs by default and you can adquire new ones (or new sections in case of Mix Maker songs). Users also can play them in a playlist.</p>
             <div class="big-stat" style="margin-top:18px">UI & Shaders</div>
             <p>Audio behavior is connected to the game's controls and visual feedback, including meters, waveforms, sliders, knobs, and other interactive elements.</p>
-            <p class="role-note" id="project-role" style="margin-top:18px">Front-End and Audio Developer.</p>
-            <div class="project-links">
-              <a href="https://play.google.com/store/apps/details?id=com.Sonically.MixMaster&hl=en" target="_blank" rel="noreferrer">Google Play</a>
-              <a href="https://apps.apple.com/ae/app/mix-master-audio-mixing-game/id1556524861" target="_blank" rel="noreferrer">App Store</a>
-              <a href="https://www.sonical.ly/" target="_blank" rel="noreferrer">Sonical.ly</a>
-            </div>
           </aside>
         </article>
         <div class="split" style="margin-top:28px">
           <div>
-            <div class="project-top"><span class="project-skills">Unity · FMOD · Wwise · Unreal · SwiftUI · Flutter</span><span class="tag">Other</span></div>
+            <div class="project-top"><span class="project-skills">Unity · FMOD · Wwise · Unreal · Swift · Flutter</span><span class="tag">Other</span></div>
             <h3 style="font-size:1.5rem;margin-top:18px">Additional Experience on Audio Integration</h3>
-            <p class="muted">Audio design and implementation for software of diverse clients, mainly for Pixzelle and Sondelli Guitars. Some Demos included.</p>
+            <p class="muted">Audio design and implementation for software of diverse clients, mainly for Pixzelle and Sondelli Guitars. Mainly these technologies were used:
+            <br>
+            - Game Engines: Unity and Unreal.
+            <br>
+            - Audio Middleware: FMOD and Wwise.
+            <br>
+            - Mobile Frameworks: Swift and Flutter.</p>
             <p class="role-note" id="project-role">Technical Sound Designer.</p>
-            <div class="project-links">
+            <div class="project-links" style="margin-top:8px">
+            <a href="https://youtube.com/playlist?list=PL_w-v80hrjMJSnTuSzULB6KoJJLazH-uC&si=ARG46EoZKs9XmZyW" target="_blank" rel="noreferrer">Interactive Audio Demos</a>
             <a href="https://pixzelle.mx/en" target="_blank" rel="noreferrer">Pixzelle</a>
             <a href="https://sondelli.com/" target="_blank" rel="noreferrer">Sondelli Guitars</a>
-            <a href="https://youtube.com/playlist?list=PL_w-v80hrjMJSnTuSzULB6KoJJLazH-uC&si=--H0Sg05Ovj4_m_J" target="_blank" rel="noreferrer">Demos</a>
             </div>
           </div>
-          <ul class="feature-list">
-            <li><div><strong>Interactive Audio Systems</strong><span>Audio parameters and states connected to gameplay and interface behavion. Creating a synchronization between audio, graphics and user actions.</span></div></li>
-            <li><div><strong>Audio Assets</strong><span>Elements like Songs, SFX, Foleys and other related assets are implemented smartly, enriching the game/app experience.</span></div></li>
-          </ul>
+          <div>
+              <img class="mixmaster-reel-image" id="mixmaster-reel-image" src="images/design/gamecollection1.png" alt="Game Collection">
+          </div>
         </div>
-        <div class="stack"><span>Unity & C#</span><span>FMOD</span><span>Wwise</span><span>Unreal</span><span>SwiftUI</span><span>Flutter</span></div>
+        
+        <div class="split" style="margin-top:20px">
+        <ul class="feature-list">
+            <li><div><strong>Interactive Audio Systems</strong><span>Audio parameters and states connected to gameplay and interface behavior: Synchronization between audio, graphics and user actions.</span></div></li>
+        </ul>
+        <ul class="feature-list">
+            <li><div><strong>Audio Assets</strong><span>Elements like Songs, SFX, Foleys and other related assets are implemented smartly, enriching the game/app experience.</span></div></li>
+        </ul>
+        </div>
+        
+        <div class="stack"><span>Unity & C#</span><span>FMOD</span><span>Wwise</span><span>Unreal</span><span>Swift</span><span>Flutter</span></div>
       </div>
     </section>
 
@@ -399,16 +432,36 @@
         </div>
         <div class="music-grid">
           <article class="music-card">
-            <div class="music-art" aria-hidden="true"></div>
-            <div class="music-body"><h3>Unu</h3><p>An album collecting original songs I produced from collaborative projects and technical sound designer demonstrations.</p><a href="https://open.spotify.com/album/0Ot7lsiCLlMgmnG2ZT0FOU?si=SVghzbQHSEqy9Wklb1ENJg" target="_blank" rel="noreferrer">Listen on Spotify ↗</a></div>
+              <div class="music-art">
+                <img src="images/music/art1.png" alt="Original Music">
+              </div>
+              <div class="music-body"><h3>Original Music</h3><p>Original music I produced for collaborative projects and technical sound designer demonstrations.
+                  <br>
+                  - 1st album "unu" is alredy released.
+                  <br>
+                  - 2nd album "La Vida De Nuevo Empezó" is upcoming.</p>
+                  <a href="https://open.spotify.com/album/0Ot7lsiCLlMgmnG2ZT0FOU?si=SVghzbQHSEqy9Wklb1ENJg" target="_blank" rel="noreferrer">Listen on Spotify ↗</a>
+              </div>
           </article>
           <article class="music-card">
-            <div class="music-art" aria-hidden="true"></div>
-            <div class="music-body"><h3>La Vida De Nuevo Empezó</h3><p>A forthcoming album of original songs. It is in progress and it will be released in the next months.</p><span class="muted small">Upcoming release</span></div>
+              <div class="music-art">
+                <img src="images/music/photo1.png" alt="Musical performances">
+              </div>
+              
+              <div class="music-body"><h3>Musical Performances</h3><p>Rehearsals and live performances of keyboard songs (and occasionaly with vocals too). Covers, original music, and other interesting stuff.</p>
+                  <a href="https://www.youtube.com/@5amxMA" target="_blank" rel="noreferrer">YouTube ↗</a><br><a href="https://www.tiktok.com/@5_a_m_x" target="_blank" rel="noreferrer">TikTok ↗</a>
+              </div>
+            
           </article>
           <article class="music-card">
-            <div class="music-art" aria-hidden="true"></div>
-            <div class="music-body"><h3>Musical Performances</h3><p>Rehearses and live performances of keyboard songs (and occasionaly with vocals too). Covers, original music, and other interesting stuff.</p><a href="https://www.youtube.com/@5amxMA" target="_blank" rel="noreferrer">YouTube ↗</a><br><a href="https://www.tiktok.com/@5_a_m_x" target="_blank" rel="noreferrer">TikTok ↗</a></div>
+              <div class="music-art">
+                <img src="images/music/musiccollection1.png" alt="Sheets & Arragements">
+              </div>
+            
+            <div class="music-body"><h3>Sheets & Arragements</h3><p>As a professional musician, I like to do arragements, write sheets and produce MIDI files. Here is an example of "El Amar y Querer" song of José José.</p>
+                <a href="music/el_amar_y_querer.pdf" target="_blank" rel="noreferrer">Sheet ↗</a><br><a href="music/el_amar_y_querer.mid" target="_blank" rel="noreferrer">MIDI ↗</a><br><a href="https://youtu.be/HirKorhRmek?si=jkxJU_c3MnM3ygr6" target="_blank" rel="noreferrer">Performance ↗</a>
+            </div>
+            
           </article>
         </div>
         
@@ -460,7 +513,7 @@
 
         {title:"Spatial Mixing - AXYZ",skills: "JUCE & C++ · OpenGL",type:"3D Spatial Mixing",description:"A collaborative team project that consists of a Spatial Audio Mixing Plug-In that represents tracks with 3D planets, using slave and master instances to have a straightforward control of independent tracks (with their effects) and overall mix.",role:"Front-End Developer.",links:[["AXYZ Innovations","https://axyzinnovations.com/"]],media:"images/software/axyz1.png"},
 
-        {title:"Other Projects",skills: "JUCE & C++ · Java",type:"Other",description:"I have done more projects for diverse clients, involving multiple effects, samplers, digital instruments, etc. Also I created a Java Application to learn music for my Bachelor Degree Thesis.",role:"Main Developer.",links:[["Java Musical App","https://youtu.be/QAFVOuiy6Bs?si=Eigfchu1KP20vNAz"]],media:"images/software/plugincollection1.png"}
+        {title:"Other Projects",skills: "JUCE & C++ · Java",type:"Other",description:"I have done more projects for diverse clients: Noir, Zayrik Studios, etc. Involving multiple effects, samplers, digital instruments, and other features. Also I created a Java Application to learn music for my Bachelor Degree Thesis.",role:"Multiple Roles.",links:[["Juce C++ Demo","https://youtu.be/VzH9g_ySJCU?si=0-wm6tH8z61_j_R4"], ["Java Musical App","https://youtu.be/QAFVOuiy6Bs?si=-LuFpkwJnzZOls9j"]],media:"images/software/plugincollection1.png"}
     ];
     let activeProject=0;
     const tabs=[...document.querySelectorAll(".showcase-tab")], dots=[...document.querySelectorAll(".showcase-dot")], media=document.getElementById("project-media");
