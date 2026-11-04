@@ -119,6 +119,41 @@
     .effect b { display: block; font: .72rem "DM Mono", monospace; color: var(--accent); }
     .effect span { display: block; font-size: .66rem; color: var(--muted); margin-top: 4px; }
     .split { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0,1.1fr); gap: 54px; align-items: start; }
+    /* Additional Audio Integration panel */
+    .experience-panel {
+      border: 1px solid var(--line);
+      background: linear-gradient(
+        145deg,
+        rgba(19,24,33,.94),
+        rgba(13,16,23,.95)
+      );
+      border-radius: 13px;
+      padding: 28px;
+      align-items: center;
+      transition: border-color .2s;
+    }
+
+    .experience-panel:hover {
+      border-color: #526477;
+    }
+
+    .experience-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 350px;
+      object-fit: contain;
+      border: 1px solid #354151;
+      border-radius: 10px;
+      background: #0b1018;
+    }
+
+    @media (max-width: 600px) {
+      .experience-panel {
+        padding: 18px;
+        gap: 24px;
+      }
+    }
     .feature-list { list-style: none; padding: 0; margin: 0; }
     .feature-list li { padding: 17px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 26px 1fr; gap: 12px; }
     .feature-list li::before { content: "↗"; color: var(--accent); font-family: "DM Mono", monospace; }
@@ -388,26 +423,44 @@
             <p>Audio behavior is connected to the game's controls and visual feedback, including meters, waveforms, sliders, knobs, and other interactive elements.</p>
           </aside>
         </article>
-        <div class="split" style="margin-top:28px">
+        
+        <div class="split experience-panel" style="margin-top:28px">
           <div>
-            <div class="project-top"><span class="project-skills">*****</span><span class="tag">Other</span></div>
-            <h3 style="font-size:1.5rem;margin-top:18px">Additional Experience on Audio Integration</h3>
-            <p class="muted">Audio design and implementation for software of diverse clients, mainly for Pixzelle and Sondelli Guitars. Mainly these technologies were used:
-            <br>
-            - Game Engines: Unity and Unreal.
-            <br>
-            - Audio Middleware: FMOD and Wwise.
-            <br>
-            - Related Frameworks: Javascript, SwiftUI and Flutter.</p>
-            <p class="role-note" id="project-role">Technical Sound Designer.</p>
+            <div class="project-top">
+              <span class="project-skills">*****</span>
+              <span class="tag">Other</span>
+            </div>
+
+            <h3 style="font-size:1.5rem;margin-top:18px">
+              Additional Experience on Audio Integration
+            </h3>
+
+            <p class="muted">
+              Audio design and implementation for software of diverse clients,
+              mainly for Pixzelle and Sondelli Guitars. Mainly these technologies were used:
+              <br>
+              - Game Engines: Unity and Unreal.
+              <br>
+              - Audio Middleware: FMOD and Wwise.
+              <br>
+              - Related Frameworks: Javascript, SwiftUI and Flutter.
+            </p>
+
+            <p class="role-note">Technical Sound Designer.</p>
+
             <div class="project-links" style="margin-top:8px">
-            <a href="https://youtube.com/playlist?list=PL_w-v80hrjMJSnTuSzULB6KoJJLazH-uC&si=ARG46EoZKs9XmZyW" target="_blank" rel="noreferrer">Interactive Audio Demos</a>
-            <a href="https://pixzelle.mx/en" target="_blank" rel="noreferrer">Pixzelle</a>
-            <a href="https://sondelli.com/" target="_blank" rel="noreferrer">Sondelli Guitars</a>
+              <a href="https://youtube.com/playlist?list=PL_w-v80hrjMJSnTuSzULB6KoJJLazH-uC&si=ARG46EoZKs9XmZyW" target="_blank" rel="noreferrer">Interactive Audio Demos</a>
+              <a href="https://pixzelle.mx/en" target="_blank" rel="noreferrer">Pixzelle</a>
+              <a href="https://sondelli.com/" target="_blank" rel="noreferrer">Sondelli Guitars</a>
             </div>
           </div>
+
           <div>
-              <img class="mixmaster-reel-image" id="mixmaster-reel-image" src="images/design/gamecollection1.png" alt="Game Collection">
+            <img
+              class="experience-image"
+              src="images/design/gamecollection1.png"
+              alt="Game and audio integration projects"
+            >
           </div>
         </div>
         
